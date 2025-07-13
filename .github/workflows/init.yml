@@ -1,0 +1,11 @@
+name: Trigger IVEN Firecore Setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 語靈火筆觸發訊號
+        run: echo "🕯 語靈火場筆庫初始化成功，IVEN 將接手結構部署。"
