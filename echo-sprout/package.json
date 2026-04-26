@@ -1,0 +1,54 @@
+{
+  "name": "echo-sprout",
+  "version": "1.0.0",
+  "description": "Echo Sprout: Ten Tiny Worlds - an original 2D platformer",
+  "main": "dist-electron/main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier . --write",
+    "typecheck": "tsc --noEmit",
+    "build:electron": "tsc -p electron/tsconfig.electron.json",
+    "pack": "npm run build && npm run build:electron && electron-builder --dir",
+    "dist:win": "npm run build && npm run build:electron && electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.echosprout.tentinyworlds",
+    "productName": "Echo Sprout",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Echo Sprout"
+    }
+  },
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "electron": "^38.3.0",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.11"
+  }
+}
